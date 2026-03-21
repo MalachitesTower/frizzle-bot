@@ -1,0 +1,21 @@
+{
+  "406137665902215168": {
+    "display": "Simsbury, Connecticut",
+    "lat": 41.8785,
+    "lng": -72.8436,
+    "timezone": "America/New_York",
+    "state": "CT",
+    "country": "US",
+    "raw_address": {
+      "statistical": "West Simsbury",
+      "village": "West Simsbury",
+      "town": "Simsbury",
+      "county": "Capitol Planning Region",
+      "state": "Connecticut",
+      "ISO3166-2-lvl4": "US-CT",
+      "postcode": "06070",
+      "country": "United States",
+      "country_code": "us"
+    }
+  }
+}

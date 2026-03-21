@@ -1,0 +1,65 @@
+2026-03-20 22:20:29,504 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-20 22:20:29,504 WARNING davey is not installed, voice will NOT be supported
+2026-03-20 22:20:29,504 INFO logging in using static token
+2026-03-20 22:23:18,391 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-20 22:23:18,391 WARNING davey is not installed, voice will NOT be supported
+2026-03-20 22:23:18,391 INFO logging in using static token
+2026-03-20 22:23:19,239 INFO Shard ID None has connected to Gateway (Session ID: 2ac61e1cb30f63263f2975b731a8cf98).
+2026-03-20 22:51:38,564 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-20 22:51:38,564 WARNING davey is not installed, voice will NOT be supported
+2026-03-20 22:51:38,564 INFO logging in using static token
+2026-03-20 22:51:39,348 INFO Shard ID None has connected to Gateway (Session ID: fb34133c530d0d60f5147f50cc254b37).
+2026-03-20 22:51:46,505 ERROR Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 508, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 59, in on_message
+    tz = get_location(message.author.id)
+         ^^^^^^^^^^^^
+NameError: name 'get_location' is not defined
+2026-03-20 22:52:26,169 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-20 22:52:26,169 WARNING davey is not installed, voice will NOT be supported
+2026-03-20 22:52:26,182 INFO logging in using static token
+2026-03-20 22:52:26,881 INFO Shard ID None has connected to Gateway (Session ID: 4af1391a5bfa2140ce17beb726048534).
+2026-03-20 22:52:33,823 ERROR Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 508, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 59, in on_message
+    tz = get_location(message.author.id)
+         ^^^^^^^^^^^^
+NameError: name 'get_location' is not defined
+2026-03-20 22:55:19,982 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-20 22:55:19,982 WARNING davey is not installed, voice will NOT be supported
+2026-03-20 22:55:19,984 INFO logging in using static token
+2026-03-20 22:55:20,588 INFO Shard ID None has connected to Gateway (Session ID: c5619e916c14802349b1f6ad0ef3af88).
+2026-03-20 22:55:53,706 ERROR Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 508, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 55, in on_message
+    success, response = save_location(message.author.id, raw)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\location.py", line 140, in save_location
+    normalized, error = resolve_location(raw_input)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\location.py", line 124, in resolve_location
+    state_code = _extract_state_code(address)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\location.py", line 42, in _extract_state_code
+    state_map = {
+                ^
+TypeError: unhashable type: 'dict'
+2026-03-20 22:57:51,303 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-20 22:57:51,303 WARNING davey is not installed, voice will NOT be supported
+2026-03-20 22:57:51,303 INFO logging in using static token
+2026-03-20 22:57:51,950 INFO Shard ID None has connected to Gateway (Session ID: 2211d2ff3a2bb4066541588d6d694af2).
+2026-03-21 06:51:58,110 WARNING Shard ID None has stopped responding to the gateway. Closing and restarting.
+2026-03-21 06:51:58,228 INFO Shard ID None session has been invalidated.
+2026-03-21 06:52:03,604 INFO Shard ID None has connected to Gateway (Session ID: 8f611ab4d282eba80c615f4f7736adea).
+2026-03-21 07:20:49,638 WARNING Shard ID None has stopped responding to the gateway. Closing and restarting.
+2026-03-21 07:20:49,766 INFO Shard ID None session has been invalidated.
+2026-03-21 07:20:55,456 INFO Shard ID None has connected to Gateway (Session ID: e964847ece32dcf757e8fc7d11e6f38a).
+2026-03-21 12:20:08,456 WARNING Shard ID None has stopped responding to the gateway. Closing and restarting.
+2026-03-21 12:20:08,789 INFO Shard ID None session has been invalidated.
+2026-03-21 12:20:14,165 INFO Shard ID None has connected to Gateway (Session ID: d63a582cb9754a2d1556b51981955049).
