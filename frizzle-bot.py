@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from datetime import datetime
 from location import get_location, save_location, to_ebird_region, to_latlng, to_inaturalist_params
 from ebird import get_recent_observations, get_rarebirds, get_historicbirds, format_observations
+from synthesize import synthesize_ebird
 
 import logging
 logging.basicConfig(
@@ -80,6 +81,7 @@ async def on_message(message):
         sections.append(format_observations(historic, title="Birds observed on this date last year in your area") if not err else f"Historic sightings unavailable: {err}")
 
         result = "\n\n".join(sections)
+        result = synthesize_ebird(result)
         await message.channel.send(result)
 
 
