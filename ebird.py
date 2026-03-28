@@ -102,12 +102,12 @@ def get_historicbirds(region_code: str, y: int, m: int, d: int, days_back: int =
     return observations, None
 
 
-def format_observations(observations: list) -> str:
+def format_observations(observations: list, title: str = "Recent bird sightings (past 7 days)") -> str:
     """Turn raw eBird JSON into a readable Discord message."""
     if not observations:
         return "No recent observations found for your area."
 
-    lines = [f"**Recent bird sightings (past 7 days)**\n"]
+    lines = [f"**{title}**\n"]
     for obs in observations:
         name = obs.get("comName", "Unknown")
         location = obs.get("locName", "Unknown location")

@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 from datetime import datetime
 from location import get_location, save_location, to_ebird_region, to_latlng, to_inaturalist_params
+from ebird import get_recent_observations, get_rarebirds, get_historicbirds, format_observations
 
 import logging
 logging.basicConfig(
@@ -57,13 +58,28 @@ async def on_message(message):
     
     # --- !report ---
     if message.content.lower() == "!report":
-        tz = get_location(message.author.id)
-        if tz is None:
+        loc = get_location(message.author.id)
+        if loc is None:
             await message.channel.send(
-                "No location set. Use `!setlocation America/New_York` first."
+                "No location set. Use `!setlocation Hartford CT` first."
             )
             return
-        result = "this function is still being built"
+
+        lat, lng = to_latlng(loc)
+        region = to_ebird_region(loc)
+        today = datetime.now()
+        sections = []
+
+        obs, err = get_recent_observations(lat, lng)
+        sections.append(format_observations(obs, title="Recent bird sightings (past 7 days)") if not err else f"Recent sightings unavailable: {err}")
+
+        rare, err = get_rarebirds(lat, lng)
+        sections.append(format_observations(rare, title="Rare birds observed in your area") if not err else f"Rare sightings unavailable: {err}")
+
+        historic, err = get_historicbirds(region, today.year - 1, today.month, today.day)
+        sections.append(format_observations(historic, title="Birds observed on this date last year in your area") if not err else f"Historic sightings unavailable: {err}")
+
+        result = "\n\n".join(sections)
         await message.channel.send(result)
 
 

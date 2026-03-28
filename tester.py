@@ -17,11 +17,11 @@ observations, error = get_rarebirds(lat, lng, days_back=7, max_results=10)
 if error:
     print(f"Error: {error}")
 else:
-    print(format_observations(observations))
-    
+    print(format_observations(observations, title="Rare birds observed in your area"))
+
 observations, error = get_historicbirds("US-CT", y-1, m, d, days_back=7, max_results=10)
 if error:
     print(f"Error: {error}")
 else:
-    print(format_observations(observations))
+    print(format_observations(observations, title="Birds observed on this date last year in your area"))
 
