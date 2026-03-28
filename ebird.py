@@ -78,7 +78,7 @@ def get_historicbirds(region_code: str, y: int, m: int, d: int, days_back: int =
     max_results: cap the number of results returned
     """
     url = f"{BASE_URL}/data/obs/{region_code}/historic/{y}/{m}/{d}"
-     headers = {"X-eBirdApiToken": EBIRD_TOKEN}
+    headers = {"X-eBirdApiToken": EBIRD_TOKEN}
     params = {
         "back": days_back,
         "maxResults": max_results,
