@@ -63,3 +63,696 @@ TypeError: unhashable type: 'dict'
 2026-03-21 12:20:08,456 WARNING Shard ID None has stopped responding to the gateway. Closing and restarting.
 2026-03-21 12:20:08,789 INFO Shard ID None session has been invalidated.
 2026-03-21 12:20:14,165 INFO Shard ID None has connected to Gateway (Session ID: d63a582cb9754a2d1556b51981955049).
+2026-03-27 21:36:06,003 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-27 21:36:06,003 WARNING davey is not installed, voice will NOT be supported
+2026-03-27 21:36:06,004 INFO logging in using static token
+2026-03-27 21:38:30,174 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-27 21:38:30,174 WARNING davey is not installed, voice will NOT be supported
+2026-03-27 21:38:30,175 INFO logging in using static token
+2026-03-27 21:39:14,308 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-27 21:39:14,308 WARNING davey is not installed, voice will NOT be supported
+2026-03-27 21:39:14,310 INFO logging in using static token
+2026-03-27 21:41:27,982 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-27 21:41:27,982 WARNING davey is not installed, voice will NOT be supported
+2026-03-27 21:41:27,982 INFO logging in using static token
+2026-03-27 21:42:41,018 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-27 21:42:41,018 WARNING davey is not installed, voice will NOT be supported
+2026-03-27 21:42:41,018 INFO logging in using static token
+2026-03-27 21:43:29,845 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-27 21:43:29,846 WARNING davey is not installed, voice will NOT be supported
+2026-03-27 21:43:29,847 INFO logging in using static token
+2026-03-27 21:44:37,182 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-27 21:44:37,182 WARNING davey is not installed, voice will NOT be supported
+2026-03-27 21:44:37,184 INFO logging in using static token
+2026-03-27 21:45:12,339 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-27 21:45:12,339 WARNING davey is not installed, voice will NOT be supported
+2026-03-27 21:45:12,347 INFO logging in using static token
+2026-03-27 21:49:10,308 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-27 21:49:10,308 WARNING davey is not installed, voice will NOT be supported
+2026-03-27 21:49:10,308 INFO logging in using static token
+2026-03-27 21:50:20,623 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-27 21:50:20,623 WARNING davey is not installed, voice will NOT be supported
+2026-03-27 21:50:20,623 INFO logging in using static token
+2026-03-27 21:51:34,576 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-27 21:51:34,576 WARNING davey is not installed, voice will NOT be supported
+2026-03-27 21:51:34,576 INFO logging in using static token
+2026-03-27 21:53:34,730 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-27 21:53:34,730 WARNING davey is not installed, voice will NOT be supported
+2026-03-27 21:53:34,730 INFO logging in using static token
+2026-03-27 21:53:35,439 INFO Shard ID None has connected to Gateway (Session ID: a57b560044937088141764dda83f0531).
+2026-03-27 21:54:45,543 ERROR Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 508, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 83, in on_message
+    await message.channel.send(result)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\abc.py", line 1706, in send
+    data = await state.http.send_message(channel.id, params=params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\http.py", line 778, in request
+    raise HTTPException(response, data)
+discord.errors.HTTPException: 400 Bad Request (error code: 50035): Invalid Form Body
+In content: Must be 2000 or fewer in length.
+2026-03-27 22:27:34,702 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-27 22:27:34,702 WARNING davey is not installed, voice will NOT be supported
+2026-03-27 22:27:34,709 INFO logging in using static token
+2026-03-27 22:27:35,374 INFO Shard ID None has connected to Gateway (Session ID: 75abe3909dd0cda241f31c29a58e17a9).
+2026-03-27 22:31:49,164 ERROR Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 508, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 84, in on_message
+    synthesize_ebird(result)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\synthesize.py", line 19, in synthesize_ebird
+    f"{obs.get('comName', 'Unknown')} ({obs.get('howMany', '?')})"
+       ^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+2026-03-27 22:32:19,240 ERROR Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 508, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 84, in on_message
+    synthesize_ebird(result)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\synthesize.py", line 19, in synthesize_ebird
+    f"{obs.get('comName', 'Unknown')} ({obs.get('howMany', '?')})"
+       ^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+2026-03-27 22:34:41,677 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-27 22:34:41,677 WARNING davey is not installed, voice will NOT be supported
+2026-03-27 22:34:41,677 INFO logging in using static token
+2026-03-27 22:34:42,276 INFO Shard ID None has connected to Gateway (Session ID: cbc2a89c2b7899ba2704bc83b3621950).
+2026-03-27 22:36:23,407 ERROR Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 508, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 84, in on_message
+    synthesize_ebird(result)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\synthesize.py", line 19, in synthesize_ebird
+    f" at {obs.get('locName', 'unknown location')}"
+    ^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+2026-03-27 22:38:51,046 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-27 22:38:51,047 WARNING davey is not installed, voice will NOT be supported
+2026-03-27 22:38:51,048 INFO logging in using static token
+2026-03-27 22:38:51,623 INFO Shard ID None has connected to Gateway (Session ID: 86a0c2b758a9f38415a0582f68f436fb).
+2026-03-27 22:39:34,337 INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-03-27 22:41:06,990 WARNING Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 92, in <module>
+    client.run(TOKEN)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 933, in run
+    asyncio.run(runner())
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 674, in run_until_complete
+    self.run_forever()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 322, in run_forever
+    super().run_forever()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 641, in run_forever
+    self._run_once()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1986, in _run_once
+    handle._run()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 508, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 80, in on_message
+    historic, err = get_historicbirds(region, today.year - 1, today.month, today.day)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\ebird.py", line 89, in get_historicbirds
+    response = requests.get(url, headers=headers, params=params)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\requests\sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\requests\sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\requests\adapters.py", line 645, in send
+    resp = conn.urlopen(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 292, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 720, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1251, in recv_into
+    return self.read(nbytes, buffer)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1103, in read
+    return self._sslobj.read(len, buffer)
+
+2026-03-27 22:41:16,993 WARNING Shard ID None heartbeat blocked for more than 20 seconds.
+Loop thread traceback (most recent call last):
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 92, in <module>
+    client.run(TOKEN)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 933, in run
+    asyncio.run(runner())
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 674, in run_until_complete
+    self.run_forever()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 322, in run_forever
+    super().run_forever()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 641, in run_forever
+    self._run_once()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1986, in _run_once
+    handle._run()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 508, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 80, in on_message
+    historic, err = get_historicbirds(region, today.year - 1, today.month, today.day)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\ebird.py", line 89, in get_historicbirds
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\requests\sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\requests\sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\requests\adapters.py", line 645, in send
+    resp = conn.urlopen(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 292, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 720, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1251, in recv_into
+    return self.read(nbytes, buffer)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1103, in read
+    return self._sslobj.read(len, buffer)
+
+2026-03-27 22:41:27,005 WARNING Shard ID None heartbeat blocked for more than 30 seconds.
+Loop thread traceback (most recent call last):
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 92, in <module>
+    client.run(TOKEN)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 933, in run
+    asyncio.run(runner())
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 674, in run_until_complete
+    self.run_forever()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 322, in run_forever
+    super().run_forever()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 641, in run_forever
+    self._run_once()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1986, in _run_once
+    handle._run()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 508, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 80, in on_message
+    historic, err = get_historicbirds(region, today.year - 1, today.month, today.day)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\ebird.py", line 89, in get_historicbirds
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\requests\sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\requests\sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\requests\adapters.py", line 645, in send
+    resp = conn.urlopen(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 292, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 720, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1251, in recv_into
+    return self.read(nbytes, buffer)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1103, in read
+    return self._sslobj.read(len, buffer)
+
+2026-03-27 22:41:37,029 WARNING Shard ID None heartbeat blocked for more than 40 seconds.
+Loop thread traceback (most recent call last):
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 92, in <module>
+    client.run(TOKEN)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 933, in run
+    asyncio.run(runner())
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 674, in run_until_complete
+    self.run_forever()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 322, in run_forever
+    super().run_forever()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 641, in run_forever
+    self._run_once()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1986, in _run_once
+    handle._run()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 508, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 84, in on_message
+    result = synthesize_ebird(result)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\synthesize.py", line 39, in synthesize_ebird
+    message = client.messages.create(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_utils\_utils.py", line 282, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\resources\messages\messages.py", line 996, in create
+    return self._post(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_base_client.py", line 1364, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_base_client.py", line 1072, in request
+    response = self._client.send(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_backends\sync.py", line 128, in read
+    return self._sock.recv(max_bytes)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1232, in recv
+    return self.read(buflen)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1105, in read
+    return self._sslobj.read(len)
+
+2026-03-27 22:41:42,896 INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-03-27 22:41:43,046 INFO Shard ID None has successfully RESUMED session 86a0c2b758a9f38415a0582f68f436fb.
+2026-03-27 22:43:21,071 INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-03-27 22:46:41,838 WARNING Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 92, in <module>
+    client.run(TOKEN)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 933, in run
+    asyncio.run(runner())
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 674, in run_until_complete
+    self.run_forever()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 322, in run_forever
+    super().run_forever()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 641, in run_forever
+    self._run_once()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1986, in _run_once
+    handle._run()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 508, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 84, in on_message
+    result = synthesize_ebird(result)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\synthesize.py", line 39, in synthesize_ebird
+    message = client.messages.create(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_utils\_utils.py", line 282, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\resources\messages\messages.py", line 996, in create
+    return self._post(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_base_client.py", line 1364, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_base_client.py", line 1072, in request
+    response = self._client.send(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_backends\sync.py", line 128, in read
+    return self._sock.recv(max_bytes)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1232, in recv
+    return self.read(buflen)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1105, in read
+    return self._sslobj.read(len)
+
+2026-03-27 22:46:44,906 INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-03-27 22:48:01,546 INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-03-27 22:54:21,399 INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-03-27 22:58:03,967 INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-03-28 07:27:16,458 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-28 07:27:16,459 WARNING davey is not installed, voice will NOT be supported
+2026-03-28 07:27:16,459 INFO logging in using static token
+2026-03-28 20:24:30,235 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-28 20:24:30,237 WARNING davey is not installed, voice will NOT be supported
+2026-03-28 20:24:30,238 INFO logging in using static token
+2026-03-28 20:24:31,015 INFO Shard ID None has connected to Gateway (Session ID: 336da64541774de2f18aace93d9061c4).
+2026-03-28 20:26:44,714 WARNING Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 172, in <module>
+    client.run(TOKEN)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 933, in run
+    asyncio.run(runner())
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 674, in run_until_complete
+    self.run_forever()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 322, in run_forever
+    super().run_forever()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 641, in run_forever
+    self._run_once()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1986, in _run_once
+    handle._run()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 508, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 85, in on_message
+    result = synthesize_ebird(result)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\synthesize.py", line 43, in synthesize_ebird
+    message = client.messages.create(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_utils\_utils.py", line 282, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\resources\messages\messages.py", line 996, in create
+    return self._post(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_base_client.py", line 1364, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_base_client.py", line 1072, in request
+    response = self._client.send(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_backends\sync.py", line 128, in read
+    return self._sock.recv(max_bytes)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1232, in recv
+    return self.read(buflen)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1105, in read
+    return self._sslobj.read(len)
+
+2026-03-28 20:26:54,720 WARNING Shard ID None heartbeat blocked for more than 20 seconds.
+Loop thread traceback (most recent call last):
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 172, in <module>
+    client.run(TOKEN)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 933, in run
+    asyncio.run(runner())
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 674, in run_until_complete
+    self.run_forever()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 322, in run_forever
+    super().run_forever()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 641, in run_forever
+    self._run_once()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1986, in _run_once
+    handle._run()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 508, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 85, in on_message
+    result = synthesize_ebird(result)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\synthesize.py", line 43, in synthesize_ebird
+    message = client.messages.create(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_utils\_utils.py", line 282, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\resources\messages\messages.py", line 996, in create
+    return self._post(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_base_client.py", line 1364, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_base_client.py", line 1072, in request
+    response = self._client.send(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_backends\sync.py", line 128, in read
+    return self._sock.recv(max_bytes)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1232, in recv
+    return self.read(buflen)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1105, in read
+    return self._sslobj.read(len)
+
+2026-03-28 20:26:57,523 INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-03-28 20:26:57,688 INFO Shard ID None has successfully RESUMED session 336da64541774de2f18aace93d9061c4.
+2026-03-28 20:28:23,089 INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-03-28 20:29:21,173 INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-03-28 20:29:21,173 INFO Retrying request to /v1/messages in 0.419307 seconds
+2026-03-28 20:29:21,690 INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-03-28 20:29:21,690 INFO Retrying request to /v1/messages in 0.864345 seconds
+2026-03-28 20:29:22,652 INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-03-28 20:29:22,652 ERROR Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 508, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 119, in on_message
+    result = synthesize_ebird(result)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\synthesize.py", line 43, in synthesize_ebird
+    message = client.messages.create(
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_utils\_utils.py", line 282, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\resources\messages\messages.py", line 996, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_base_client.py", line 1364, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_base_client.py", line 1137, in request
+    raise self._make_status_error_from_response(err.response) from None
+anthropic.RateLimitError: Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': "This request would exceed your organization's rate limit of 30,000 input tokens per minute (org: 8c219bed-075f-4ec9-b8f6-a35c31869497, model: claude-sonnet-4-20250514). For details, refer to: https://docs.claude.com/en/api/rate-limits. You can see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://claude.com/contact-sales to discuss your options for a rate limit increase."}, 'request_id': 'req_011CZWRfkTveJ7GxeqJsUd9z'}
+2026-03-28 20:32:09,602 INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-03-28 20:35:25,694 WARNING Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 172, in <module>
+    client.run(TOKEN)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 933, in run
+    asyncio.run(runner())
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 674, in run_until_complete
+    self.run_forever()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 322, in run_forever
+    super().run_forever()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 641, in run_forever
+    self._run_once()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1986, in _run_once
+    handle._run()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 508, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 119, in on_message
+    result = synthesize_ebird(result)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\synthesize.py", line 43, in synthesize_ebird
+    message = client.messages.create(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_utils\_utils.py", line 282, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\resources\messages\messages.py", line 996, in create
+    return self._post(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_base_client.py", line 1364, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_base_client.py", line 1072, in request
+    response = self._client.send(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_backends\sync.py", line 128, in read
+    return self._sock.recv(max_bytes)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1232, in recv
+    return self.read(buflen)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1105, in read
+    return self._sslobj.read(len)
+
+2026-03-28 20:35:35,711 WARNING Shard ID None heartbeat blocked for more than 20 seconds.
+Loop thread traceback (most recent call last):
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 172, in <module>
+    client.run(TOKEN)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 933, in run
+    asyncio.run(runner())
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 674, in run_until_complete
+    self.run_forever()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 322, in run_forever
+    super().run_forever()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 641, in run_forever
+    self._run_once()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1986, in _run_once
+    handle._run()
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 508, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 119, in on_message
+    result = synthesize_ebird(result)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\synthesize.py", line 43, in synthesize_ebird
+    message = client.messages.create(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_utils\_utils.py", line 282, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\resources\messages\messages.py", line 996, in create
+    return self._post(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_base_client.py", line 1364, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\anthropic\_base_client.py", line 1072, in request
+    response = self._client.send(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_sync\http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\httpcore\_backends\sync.py", line 128, in read
+    return self._sock.recv(max_bytes)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1232, in recv
+    return self.read(buflen)
+  File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1105, in read
+    return self._sslobj.read(len)
+
+2026-03-28 20:35:38,884 INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-03-28 20:35:39,021 INFO Shard ID None has successfully RESUMED session 336da64541774de2f18aace93d9061c4.
+2026-03-28 20:42:29,072 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-28 20:42:29,072 WARNING davey is not installed, voice will NOT be supported
+2026-03-28 20:42:29,078 INFO logging in using static token
+2026-03-28 20:42:29,781 INFO Shard ID None has connected to Gateway (Session ID: c86c8c79134d589bfc80f1c9ab15b2c7).
+2026-03-28 20:42:46,703 WARNING Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='nominatim.openstreetmap.org', port=443): Read timed out. (read timeout=1)")': /search?q=Ann+Arbor%2C+MI&format=json&limit=1&addressdetails=1&accept-language=en
+2026-03-28 20:43:13,363 INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-03-28 20:43:13,524 ERROR Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\client.py", line 508, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\frizzle-bot.py", line 120, in on_message
+    await message.channel.send(result)
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\abc.py", line 1706, in send
+    data = await state.http.send_message(channel.id, params=params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\18576\Dropbox\_code\Discord\frizzle-bot\venv\Lib\site-packages\discord\http.py", line 778, in request
+    raise HTTPException(response, data)
+discord.errors.HTTPException: 400 Bad Request (error code: 50035): Invalid Form Body
+In content: Must be 2000 or fewer in length.
+2026-03-28 20:44:53,311 INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-03-28 20:48:23,936 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-28 20:48:23,936 WARNING davey is not installed, voice will NOT be supported
+2026-03-28 20:48:23,937 INFO logging in using static token
+2026-03-28 20:48:24,980 INFO Shard ID None has connected to Gateway (Session ID: 52c2036e27279764dc0967f2b4d37a6a).

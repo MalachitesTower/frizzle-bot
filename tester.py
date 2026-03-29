@@ -1,32 +1,33 @@
-from ebird import get_recent_observations, get_rarebirds, get_historicbirds, format_observations
-from datetime import date
+from ebird import get_ebird_recent_obs, get_ebird_rare_birds, get_ebird_historic_birds, format_ebird_obs
+from inat import get_inat_recent_obs, get_inat_historic_obs, format_inat_obs
 from synthesize import synthesize_ebird
+from datetime import date, datetime
+from settings import RADIUS_KM
 
 lat, lng = 41.85851607776688, -72.86318880283952
-m = date.today().month
-d = date.today().day
-y = date.today().year
+region = "US-CT"
+today = date.today()
+sections = []
 
-observations, error = get_recent_observations(lat, lng, days_back=7, max_results=10)
-if error:
-    print(f"Error: {error}")
-else:
-    summary = synthesize_ebird(observations, "Recent observation in Hartford, CT")
-    print(summary)
-    print(f"\nCharacter count: {len(summary)}")
+obs, err = get_ebird_recent_obs(lat, lng)
+sections.append(format_ebird_obs(obs, title="Recent bird observations near you (past 7 days)") if not err else f"Recent sightings unavailable: {err}")
 
-observations, error = get_rarebirds(lat, lng, days_back=7, max_results=10)
-if error:
-    print(f"Error: {error}")
-else:
-    summary = synthesize_ebird(observations, "Rare birds observed in Hartford, CT")
-    print(summary)
-    print(f"\nCharacter count: {len(summary)}")
+raw = "\n\n".join(sections)
+synthesized = synthesize_ebird(raw)
 
-observations, error = get_historicbirds("US-CT", y-1, m, d, days_back=7, max_results=10)
-if error:
-    print(f"Error: {error}")
-else:
-    summary = synthesize_ebird(observations, "Birds observed on this date last year in Hartford, CT")
-    print(summary)
-    print(f"\nCharacter count: {len(summary)}")
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+log_path = f"test_output_{timestamp}.txt"
+
+with open(log_path, "w", encoding="utf-8") as f:
+    f.write("=" * 60 + "\n")
+    f.write("RAW OBSERVATIONS\n")
+    f.write("=" * 60 + "\n\n")
+    f.write(raw)
+    f.write("\n\n")
+    f.write("=" * 60 + "\n")
+    f.write("SYNTHESIZED OUTPUT\n")
+    f.write("=" * 60 + "\n\n")
+    f.write(synthesized)
+    f.write(f"\n\nCharacter count: {len(synthesized)}\n")
+
+print(f"Log written to {log_path}")

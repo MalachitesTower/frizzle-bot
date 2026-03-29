@@ -4,8 +4,9 @@ import os
 from dotenv import load_dotenv
 from datetime import datetime
 from location import get_location, save_location, to_ebird_region, to_latlng, to_inaturalist_params
-from ebird import get_recent_observations, get_rarebirds, get_historicbirds, format_observations
-from synthesize import synthesize_ebird
+from ebird import get_ebird_recent_obs, get_ebird_rare_birds as get_ebird_rare_obs, get_ebird_historic_birds as get_ebird_historic_obs, format_ebird_obs
+from inat import get_inat_recent_obs, get_inat_historic_obs, format_inat_obs
+from synthesize import synthesize_ebird, synthesize_inat, synthesize_all
 
 import logging
 logging.basicConfig(
@@ -57,8 +58,8 @@ async def on_message(message):
         success, response = save_location(message.author.id, raw)
         await message.channel.send(response)
     
-    # --- !report ---
-    if message.content.lower() == "!report":
+    # --- !bird ---
+    if message.content.lower() == "!bird":
         loc = get_location(message.author.id)
         if loc is None:
             await message.channel.send(
@@ -71,19 +72,120 @@ async def on_message(message):
         today = datetime.now()
         sections = []
 
-        obs, err = get_recent_observations(lat, lng)
-        sections.append(format_observations(obs, title="Recent bird sightings (past 7 days)") if not err else f"Recent sightings unavailable: {err}")
+        obs, err = get_ebird_recent_obs(lat, lng)
+        sections.append(format_ebird_obs(obs, title="Recent bird sightings (past 7 days)") if not err else f"Recent sightings unavailable: {err}")
 
-        rare, err = get_rarebirds(lat, lng)
-        sections.append(format_observations(rare, title="Rare birds observed in your area") if not err else f"Rare sightings unavailable: {err}")
+        rare, err = get_ebird_rare_obs(lat, lng)
+        sections.append(format_ebird_obs(rare, title="Rare birds observed in your area") if not err else f"Rare sightings unavailable: {err}")
 
-        historic, err = get_historicbirds(region, today.year - 1, today.month, today.day)
-        sections.append(format_observations(historic, title="Birds observed on this date last year in your area") if not err else f"Historic sightings unavailable: {err}")
+        historic, err = get_ebird_historic_obs(region, today.year - 1, today.month, today.day)
+        sections.append(format_ebird_obs(historic, title="Birds observed on this date last year in your area") if not err else f"Historic sightings unavailable: {err}")
 
         result = "\n\n".join(sections)
         result = synthesize_ebird(result)
         await message.channel.send(result)
 
+    # --- !inat ---
+    if message.content.lower() == "!inat":
+        loc = get_location(message.author.id)
+        if loc is None:
+            await message.channel.send(
+                "No location set. Use `!setlocation Hartford CT` first."
+            )
+            return
+
+        inat_params = to_inaturalist_params(loc)
+        sections = []
+
+        inat_obs, err = get_inat_recent_obs(inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"])
+        sections.append(format_inat_obs(inat_obs, title="Recent nature observations near you (past 7 days)") if not err else f"iNaturalist observations unavailable: {err}")
+
+        inat_obs, err = get_inat_historic_obs(inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"])
+        sections.append(format_inat_obs(inat_obs, title="Nature observations observed this week one year ago near you") if not err else f"iNaturalist observations unavailable: {err}")
+
+        result = "\n\n".join(sections)
+        result = synthesize_inat(result)
+        await message.channel.send(result)
+
+    # --- !report ---
+    if message.content.lower() == "!report":
+        loc = get_location(message.author.id)
+        if loc is None:
+            await message.channel.send(
+                "No location set. Use `!setlocation Hartford CT` first."
+            )
+            return
+
+        lat, lng = to_latlng(loc)
+        region = to_ebird_region(loc)
+        inat_params = to_inaturalist_params(loc)
+        today = datetime.now()
+        sections = []
+
+        obs, err = get_ebird_recent_obs(lat, lng)
+        sections.append(format_ebird_obs(obs, title="Recent bird observations near you (past 7 days)") if not err else f"Recent sightings unavailable: {err}")
+
+        rare, err = get_ebird_rare_obs(lat, lng)
+        sections.append(format_ebird_obs(rare, title="Rare birds observed in your area") if not err else f"Rare sightings unavailable: {err}")
+
+        historic, err = get_ebird_historic_obs(region, today.year - 1, today.month, today.day)
+        sections.append(format_ebird_obs(historic, title="Birds observed on this date last year in your area") if not err else f"Historic sightings unavailable: {err}")
+
+        inat_obs, err = get_inat_recent_obs(inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"])
+        sections.append(format_inat_obs(inat_obs, title="Recent nature observations near you (past 7 days)") if not err else f"iNaturalist observations unavailable: {err}")
+
+        inat_obs, err = get_inat_historic_obs(inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"])
+        sections.append(format_inat_obs(inat_obs, title="Nature observations observed this week one year ago near you") if not err else f"iNaturalist observations unavailable: {err}")
+
+        result = "\n\n".join(sections)
+        result = synthesize_ebird(result)
+        await message.channel.send(result)
+
+
+    # --- !stats ---
+    if message.content.lower() == "!stats":
+        loc = get_location(message.author.id)
+        if loc is None:
+            await message.channel.send(
+                "No location set. Use `!setlocation Hartford CT` first."
+            )
+            return
+
+        lat, lng = to_latlng(loc)
+        region = to_ebird_region(loc)
+        inat_params = to_inaturalist_params(loc)
+        today = datetime.now()
+        lines = []
+
+        def fmt_stats(label, stats, err):
+            if err:
+                return f"**{label}**: unavailable — {err}"
+            p = stats["params"]
+            dr = stats["date_range"]
+            date_str = f"{dr['earliest']} to {dr['latest']}" if dr else "n/a"
+            return (
+                f"**{label}**\n"
+                f"  Params: {p}\n"
+                f"  Observations: {stats['num_observations']} across {stats['num_locations']} location(s)\n"
+                f"  Date range: {date_str}"
+            )
+
+        stats, err = get_ebird_recent_obs(lat, lng, stats_only=True)
+        lines.append(fmt_stats("eBird recent", stats, err))
+
+        stats, err = get_ebird_rare_obs(lat, lng, stats_only=True)
+        lines.append(fmt_stats("eBird rare", stats, err))
+
+        stats, err = get_ebird_historic_obs(region, today.year - 1, today.month, today.day, stats_only=True)
+        lines.append(fmt_stats("eBird historic", stats, err))
+
+        stats, err = get_inat_recent_obs(inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"], stats_only=True)
+        lines.append(fmt_stats("iNaturalist recent", stats, err))
+
+        stats, err = get_inat_historic_obs(inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"], stats_only=True)
+        lines.append(fmt_stats("iNaturalist historic", stats, err))
+
+        await message.channel.send("\n\n".join(lines))
 
     # --- !ping ---
     if message.content.lower() == "!ping":
