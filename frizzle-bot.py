@@ -138,7 +138,7 @@ async def on_message(message):
         sections.append(format_inat_obs(inat_obs, title="Nature observations observed this week one year ago near you") if not err else f"iNaturalist observations unavailable: {err}")
 
         result = "\n\n".join(sections)
-        result = synthesize_ebird(result)
+        result = synthesize_all(result)
         await message.channel.send(result)
 
 

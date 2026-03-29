@@ -1,16 +1,15 @@
 {
   "406137665902215168": {
-    "display": "Ann Arbor, Michigan",
-    "lat": 42.2814,
-    "lng": -83.7485,
-    "timezone": "America/Detroit",
-    "state": "MI",
+    "display": "San Francisco, California",
+    "lat": 37.7879,
+    "lng": -122.4075,
+    "timezone": "America/Los_Angeles",
+    "state": "CA",
     "country": "US",
     "raw_address": {
-      "city": "Ann Arbor",
-      "county": "Washtenaw County",
-      "state": "Michigan",
-      "ISO3166-2-lvl4": "US-MI",
+      "city": "San Francisco",
+      "state": "California",
+      "ISO3166-2-lvl4": "US-CA",
       "country": "United States",
       "country_code": "us"
     }
