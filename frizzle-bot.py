@@ -1,3 +1,4 @@
+import asyncio
 import discord
 from discord.ext import tasks
 import os
@@ -5,7 +6,7 @@ from dotenv import load_dotenv
 from datetime import datetime
 from location import get_location, save_location, to_ebird_region, to_latlng, to_inaturalist_params
 from ebird import get_ebird_recent_obs, get_ebird_rare_birds as get_ebird_rare_obs, get_ebird_historic_birds as get_ebird_historic_obs, format_ebird_obs
-from inat import get_inat_recent_obs, get_inat_historic_obs, format_inat_obs
+from inat import get_inat_recent_obs, get_inat_rare_obs, get_inat_historic_obs, format_inat_obs
 from synthesize import synthesize_ebird, synthesize_inat, synthesize_all
 
 import logging
@@ -57,7 +58,7 @@ async def on_message(message):
         raw = parts[1].strip()
         success, response = save_location(message.author.id, raw)
         await message.channel.send(response)
-    
+
     # --- !bird ---
     if message.content.lower() == "!bird":
         loc = get_location(message.author.id)
@@ -72,17 +73,21 @@ async def on_message(message):
         today = datetime.now()
         sections = []
 
-        obs, err = get_ebird_recent_obs(lat, lng)
+        status = await message.channel.send("Fetching eBird observations...")
+
+        obs, err = await asyncio.to_thread(get_ebird_recent_obs, lat, lng)
         sections.append(format_ebird_obs(obs, title="Recent bird sightings (past 7 days)") if not err else f"Recent sightings unavailable: {err}")
 
-        rare, err = get_ebird_rare_obs(lat, lng)
+        rare, err = await asyncio.to_thread(get_ebird_rare_obs, lat, lng)
         sections.append(format_ebird_obs(rare, title="Rare birds observed in your area") if not err else f"Rare sightings unavailable: {err}")
 
-        historic, err = get_ebird_historic_obs(region, today.year - 1, today.month, today.day)
+        historic, err = await asyncio.to_thread(get_ebird_historic_obs, region, today.year - 1, today.month, today.day)
         sections.append(format_ebird_obs(historic, title="Birds observed on this date last year in your area") if not err else f"Historic sightings unavailable: {err}")
 
+        status = await message.channel.send("Synthesizing natural language output..")
         result = "\n\n".join(sections)
-        result = synthesize_ebird(result)
+        result = await asyncio.to_thread(synthesize_ebird, result)
+        status = await message.channel.send("Done.")
         await message.channel.send(result)
 
     # --- !inat ---
@@ -97,14 +102,21 @@ async def on_message(message):
         inat_params = to_inaturalist_params(loc)
         sections = []
 
-        inat_obs, err = get_inat_recent_obs(inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"])
+        status = await message.channel.send("Fetching iNaturalist observations...")
+
+        inat_obs, err = await asyncio.to_thread(get_inat_recent_obs, inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"])
         sections.append(format_inat_obs(inat_obs, title="Recent nature observations near you (past 7 days)") if not err else f"iNaturalist observations unavailable: {err}")
 
-        inat_obs, err = get_inat_historic_obs(inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"])
+        inat_obs, err = await asyncio.to_thread(get_inat_rare_obs, inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"])
+        sections.append(format_inat_obs(inat_obs, title="Threatened species observed near you (past 7 days)") if not err else f"iNaturalist observations unavailable: {err}")
+
+        inat_obs, err = await asyncio.to_thread(get_inat_historic_obs, inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"])
         sections.append(format_inat_obs(inat_obs, title="Nature observations observed this week one year ago near you") if not err else f"iNaturalist observations unavailable: {err}")
 
+        status = await message.channel.send("Synthesizing natural language output...")
         result = "\n\n".join(sections)
-        result = synthesize_inat(result)
+        result = await asyncio.to_thread(synthesize_inat, result)
+        status = await message.channel.send("Done.")
         await message.channel.send(result)
 
     # --- !report ---
@@ -122,23 +134,32 @@ async def on_message(message):
         today = datetime.now()
         sections = []
 
-        obs, err = get_ebird_recent_obs(lat, lng)
+        status = await message.channel.send("Fetching eBird observations...")
+
+        obs, err = await asyncio.to_thread(get_ebird_recent_obs, lat, lng)
         sections.append(format_ebird_obs(obs, title="Recent bird observations near you (past 7 days)") if not err else f"Recent sightings unavailable: {err}")
 
-        rare, err = get_ebird_rare_obs(lat, lng)
+        rare, err = await asyncio.to_thread(get_ebird_rare_obs, lat, lng)
         sections.append(format_ebird_obs(rare, title="Rare birds observed in your area") if not err else f"Rare sightings unavailable: {err}")
 
-        historic, err = get_ebird_historic_obs(region, today.year - 1, today.month, today.day)
+        historic, err = await asyncio.to_thread(get_ebird_historic_obs, region, today.year - 1, today.month, today.day)
         sections.append(format_ebird_obs(historic, title="Birds observed on this date last year in your area") if not err else f"Historic sightings unavailable: {err}")
 
-        inat_obs, err = get_inat_recent_obs(inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"])
+        status = await message.channel.send("Fetching iNaturalist observations...")
+
+        inat_obs, err = await asyncio.to_thread(get_inat_recent_obs, inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"])
         sections.append(format_inat_obs(inat_obs, title="Recent nature observations near you (past 7 days)") if not err else f"iNaturalist observations unavailable: {err}")
 
-        inat_obs, err = get_inat_historic_obs(inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"])
+        inat_obs, err = await asyncio.to_thread(get_inat_rare_obs, inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"])
+        sections.append(format_inat_obs(inat_obs, title="Threatened species observed near you (past 7 days)") if not err else f"iNaturalist observations unavailable: {err}")
+
+        inat_obs, err = await asyncio.to_thread(get_inat_historic_obs, inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"])
         sections.append(format_inat_obs(inat_obs, title="Nature observations observed this week one year ago near you") if not err else f"iNaturalist observations unavailable: {err}")
 
+        status = await message.channel.send("Synthesizing natural language output...")
         result = "\n\n".join(sections)
-        result = synthesize_all(result)
+        result = await asyncio.to_thread(synthesize_all, result)
+        status = await message.channel.send(content="Done.")
         await message.channel.send(result)
 
 
@@ -157,6 +178,8 @@ async def on_message(message):
         today = datetime.now()
         lines = []
 
+        status = await message.channel.send("Fetching eBird stats...")
+
         def fmt_stats(label, stats, err):
             if err:
                 return f"**{label}**: unavailable — {err}"
@@ -170,21 +193,24 @@ async def on_message(message):
                 f"  Date range: {date_str}"
             )
 
-        stats, err = get_ebird_recent_obs(lat, lng, stats_only=True)
+        stats, err = await asyncio.to_thread(get_ebird_recent_obs, lat, lng, stats_only=True)
         lines.append(fmt_stats("eBird recent", stats, err))
 
-        stats, err = get_ebird_rare_obs(lat, lng, stats_only=True)
+        stats, err = await asyncio.to_thread(get_ebird_rare_obs, lat, lng, stats_only=True)
         lines.append(fmt_stats("eBird rare", stats, err))
 
-        stats, err = get_ebird_historic_obs(region, today.year - 1, today.month, today.day, stats_only=True)
+        stats, err = await asyncio.to_thread(get_ebird_historic_obs, region, today.year - 1, today.month, today.day, stats_only=True)
         lines.append(fmt_stats("eBird historic", stats, err))
 
-        stats, err = get_inat_recent_obs(inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"], stats_only=True)
+        status = await message.channel.send("Fetching iNaturalist stats...")
+
+        stats, err = await asyncio.to_thread(get_inat_recent_obs, inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"], stats_only=True)
         lines.append(fmt_stats("iNaturalist recent", stats, err))
 
-        stats, err = get_inat_historic_obs(inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"], stats_only=True)
+        stats, err = await asyncio.to_thread(get_inat_historic_obs, inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"], stats_only=True)
         lines.append(fmt_stats("iNaturalist historic", stats, err))
 
+        status = await message.channel.send("Done.")
         await message.channel.send("\n\n".join(lines))
 
     # --- !ping ---
