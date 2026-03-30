@@ -163,8 +163,8 @@ async def on_message(message):
         await message.channel.send(result)
 
 
-    # --- !stats ---
-    if message.content.lower() == "!stats":
+# --- !stats ---
+    if message.content.lower().startswith("!stats"):
         loc = get_location(message.author.id)
         if loc is None:
             await message.channel.send(
@@ -172,13 +172,24 @@ async def on_message(message):
             )
             return
 
+        parts = message.content.strip().split()
+        filter_key = parts[1].lower() if len(parts) > 1 else "all"
+
+        valid_keys = {"ebird_recent", "ebird_rare", "ebird_historic", "inat_recent", "inat_rare", "inat_historic"}
+        if filter_key != "all" and filter_key not in valid_keys:
+            await message.channel.send(
+                f"Unknown source `{filter_key}`. Valid options: `all`, `ebird_recent`, `ebird_rare`, `ebird_historic`, `inat_recent`, `inat_rare`, `inat_historic`"
+            )
+            return
+
+        def run(key):
+            return filter_key == "all" or filter_key == key
+
         lat, lng = to_latlng(loc)
         region = to_ebird_region(loc)
         inat_params = to_inaturalist_params(loc)
         today = datetime.now()
         lines = []
-
-        status = await message.channel.send("Fetching eBird stats...")
 
         def fmt_stats(label, stats, err):
             if err:
@@ -186,32 +197,39 @@ async def on_message(message):
             p = stats["params"]
             dr = stats["date_range"]
             date_str = f"{dr['earliest']} to {dr['latest']}" if dr else "n/a"
+            pages_str = f"\n  Pages fetched: {stats['pages_fetched']}" if "pages_fetched" in stats else ""
             return (
                 f"**{label}**\n"
                 f"  Params: {p}\n"
-                f"  Observations: {stats['num_observations']} across {stats['num_locations']} location(s)\n"
+                f"  Observations: {stats['num_observations']} across {stats['num_locations']} location(s){pages_str}\n"
                 f"  Date range: {date_str}"
             )
 
-        stats, err = await asyncio.to_thread(get_ebird_recent_obs, lat, lng, stats_only=True)
-        lines.append(fmt_stats("eBird recent", stats, err))
+        status = await message.channel.send("Fetching stats...")
 
-        stats, err = await asyncio.to_thread(get_ebird_rare_obs, lat, lng, stats_only=True)
-        lines.append(fmt_stats("eBird rare", stats, err))
+        if run("ebird_recent"):
+            stats, err = await asyncio.to_thread(get_ebird_recent_obs, lat, lng, stats_only=True)
+            lines.append(fmt_stats("eBird recent", stats, err))
 
-        stats, err = await asyncio.to_thread(get_ebird_historic_obs, region, today.year - 1, today.month, today.day, stats_only=True)
-        lines.append(fmt_stats("eBird historic", stats, err))
+        if run("ebird_rare"):
+            stats, err = await asyncio.to_thread(get_ebird_rare_obs, lat, lng, stats_only=True)
+            lines.append(fmt_stats("eBird rare", stats, err))
 
-        status = await message.channel.send("Fetching iNaturalist stats...")
+        if run("ebird_historic"):
+            stats, err = await asyncio.to_thread(get_ebird_historic_obs, region, today.year - 1, today.month, today.day, stats_only=True)
+            lines.append(fmt_stats("eBird historic", stats, err))
 
-        stats, err = await asyncio.to_thread(get_inat_recent_obs, inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"], stats_only=True)
-        lines.append(fmt_stats("iNaturalist recent", stats, err))
+        if run("inat_recent"):
+            stats, err = await asyncio.to_thread(get_inat_recent_obs, inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"], stats_only=True)
+            lines.append(fmt_stats("iNaturalist recent", stats, err))
 
-        stats, err = await asyncio.to_thread(get_inat_rare_obs, inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"], stats_only=True)
-        lines.append(fmt_stats("iNaturalist rare", stats, err))
+        if run("inat_rare"):
+            stats, err = await asyncio.to_thread(get_inat_rare_obs, inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"], stats_only=True)
+            lines.append(fmt_stats("iNaturalist rare", stats, err))
 
-        stats, err = await asyncio.to_thread(get_inat_historic_obs, inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"], stats_only=True)
-        lines.append(fmt_stats("iNaturalist historic", stats, err))
+        if run("inat_historic"):
+            stats, err = await asyncio.to_thread(get_inat_historic_obs, inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"], stats_only=True)
+            lines.append(fmt_stats("iNaturalist historic", stats, err))
 
         status = await message.channel.send("Done.")
         await message.channel.send("\n\n".join(lines))

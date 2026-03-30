@@ -39,6 +39,7 @@ def get_inat_recent_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int = D
 
         data = response.json()
         observations = data.get("results", [])
+        pages_fetched = 1
         print(f"Total results available: {data.get('total_results', '?')}")
     else:
         max_pages = 5
@@ -64,11 +65,11 @@ def get_inat_recent_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int = D
             time.sleep(1)
 
         observations = all_observations
+        pages_fetched = page
 
     if stats_only:
         print(f"URL: {response.url}")
-        #print(f"Pages fetched: {page}")
-        #print(f"Total results available: {total_results}")
+        print(f"Pages fetched: {pages_fetched}")
         print(f"Results returned: {len(observations)}")
         dates = sorted(obs.get("observed_on", "") for obs in observations if obs.get("observed_on"))
         locations = {obs.get("place_guess") for obs in observations if obs.get("place_guess")}
@@ -76,6 +77,7 @@ def get_inat_recent_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int = D
             "params": {"lat": lat, "lng": lng, "radius_km": radius_km, "days_back": days_back, "max_results": max_results},
             "num_observations": len(observations),
             "num_locations": len(locations),
+            "pages_fetched": pages_fetched,
             "date_range": {"earliest": dates[0], "latest": dates[-1]} if dates else {}
         }, None
 
@@ -117,6 +119,7 @@ def get_inat_rare_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int = DAY
 
         data = response.json()
         observations = data.get("results", [])
+        pages_fetched = 1
         print(f"Total results available: {data.get('total_results', '?')}")
     else:
         max_pages = 5
@@ -142,11 +145,11 @@ def get_inat_rare_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int = DAY
             time.sleep(1)
 
         observations = all_observations
+        pages_fetched = page
 
     if stats_only:
         print(f"URL: {response.url}")
-        #print(f"Pages fetched: {page}")
-        #print(f"Total results available: {total_results}")
+        print(f"Pages fetched: {pages_fetched}")
         print(f"Results returned: {len(observations)}")
         dates = sorted(obs.get("observed_on", "") for obs in observations if obs.get("observed_on"))
         locations = {obs.get("place_guess") for obs in observations if obs.get("place_guess")}
@@ -154,6 +157,7 @@ def get_inat_rare_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int = DAY
             "params": {"lat": lat, "lng": lng, "radius_km": radius_km, "days_back": days_back, "max_results": max_results},
             "num_observations": len(observations),
             "num_locations": len(locations),
+            "pages_fetched": pages_fetched,
             "date_range": {"earliest": dates[0], "latest": dates[-1]} if dates else {}
         }, None
 
@@ -201,6 +205,7 @@ def get_inat_historic_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int =
 
         data = response.json()
         observations = data.get("results", [])
+        pages_fetched = 1
         print(f"Total results available: {data.get('total_results', '?')}")
     else:
         max_pages = 5
@@ -226,11 +231,11 @@ def get_inat_historic_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int =
             time.sleep(1)
 
         observations = all_observations
+        pages_fetched = page
 
     if stats_only:
         print(f"URL: {response.url}")
-        #print(f"Total results available: {total_results}")
-        #print(f"Pages fetched: {page}")
+        print(f"Pages fetched: {pages_fetched}")
         print(f"Results returned: {len(observations)}")
         dates = sorted(obs.get("observed_on", "") for obs in observations if obs.get("observed_on"))
         locations = {obs.get("place_guess") for obs in observations if obs.get("place_guess")}
@@ -238,6 +243,7 @@ def get_inat_historic_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int =
             "params": {"lat": lat, "lng": lng, "radius_km": radius_km, "d1": d1, "d2": d2, "max_results": max_results},
             "num_observations": len(observations),
             "num_locations": len(locations),
+            "pages_fetched": pages_fetched,
             "date_range": {"earliest": dates[0], "latest": dates[-1]} if dates else {}
         }, None
 
