@@ -207,6 +207,9 @@ async def on_message(message):
         stats, err = await asyncio.to_thread(get_inat_recent_obs, inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"], stats_only=True)
         lines.append(fmt_stats("iNaturalist recent", stats, err))
 
+        stats, err = await asyncio.to_thread(get_inat_rare_obs, inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"], stats_only=True)
+        lines.append(fmt_stats("iNaturalist rare", stats, err))
+
         stats, err = await asyncio.to_thread(get_inat_historic_obs, inat_params["lat"], inat_params["lng"], radius_km=inat_params["radius"], stats_only=True)
         lines.append(fmt_stats("iNaturalist historic", stats, err))
 

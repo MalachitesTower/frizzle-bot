@@ -5,7 +5,7 @@ from settings import DAYS_BACK, MAX_RESULTS, RADIUS_KM
 
 BASE_URL = "https://api.inaturalist.org/v1"
 
-def get_inat_recent_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int = DAYS_BACK, max_results: int = MAX_RESULTS, stats_only: bool = False, paginate: bool = False):
+def get_inat_recent_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int = DAYS_BACK, max_results: int = MAX_RESULTS, stats_only: bool = False, paginate: bool = True):
     """
     Fetch recent observations near a location from iNaturalist.
     lat/lng: coordinates
@@ -23,7 +23,7 @@ def get_inat_recent_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int = D
         "lng": lng,
         "radius": radius_km,
         "d1": d1,
-        "per_page": max_results,
+        "per_page": 200,
         "order": "desc",
         "order_by": "observed_on",
         "quality_grade": "research",
@@ -67,6 +67,8 @@ def get_inat_recent_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int = D
 
     if stats_only:
         print(f"URL: {response.url}")
+        #print(f"Pages fetched: {page}")
+        #print(f"Total results available: {total_results}")
         print(f"Results returned: {len(observations)}")
         dates = sorted(obs.get("observed_on", "") for obs in observations if obs.get("observed_on"))
         locations = {obs.get("place_guess") for obs in observations if obs.get("place_guess")}
@@ -80,7 +82,7 @@ def get_inat_recent_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int = D
     return observations, None
 
 
-def get_inat_rare_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int = DAYS_BACK, max_results: int = MAX_RESULTS, stats_only: bool = False):
+def get_inat_rare_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int = DAYS_BACK, max_results: int = MAX_RESULTS, stats_only: bool = False, paginate: bool = True):
     """
     Fetch recent threatened species observations near a location from iNaturalist.
     lat/lng: coordinates
@@ -88,6 +90,7 @@ def get_inat_rare_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int = DAY
     days_back: how many days to look back
     max_results: cap the number of results returned
     stats_only: return summary statistics instead of raw observations
+    paginate: if True, fetch all pages up to max_pages=5
     """
     d1 = (date.today() - timedelta(days=days_back)).isoformat()
 
@@ -97,26 +100,53 @@ def get_inat_rare_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int = DAY
         "lng": lng,
         "radius": radius_km,
         "d1": d1,
-        "per_page": max_results,
+        "per_page": 200,
         "order": "desc",
         "order_by": "observed_on",
         "quality_grade": "research",
         "threatened": "true",
     }
 
-    response = requests.get(url, params=params)
+    if not paginate:
+        response = requests.get(url, params=params)
 
-    if response.status_code == 429:
-        return None, "iNaturalist rate limit hit. Try again later."
+        if response.status_code == 429:
+            return None, "iNaturalist rate limit hit. Try again later."
+        if response.status_code != 200:
+            return None, f"iNaturalist API error: {response.status_code}"
 
-    if response.status_code != 200:
-        return None, f"iNaturalist API error: {response.status_code}"
+        data = response.json()
+        observations = data.get("results", [])
+        print(f"Total results available: {data.get('total_results', '?')}")
+    else:
+        max_pages = 5
+        all_observations = []
+        for page in range(1, max_pages + 1):
+            params["page"] = page
+            response = requests.get(url, params=params)
 
-    data = response.json()
-    observations = data.get("results", [])
+            if response.status_code == 429:
+                return None, "iNaturalist rate limit hit. Try again later."
+            if response.status_code != 200:
+                return None, f"iNaturalist API error: {response.status_code}"
+
+            data = response.json()
+            total_results = data.get("total_results", 0)
+            if page == 1:
+                print(f"Total results available: {total_results}")
+
+            all_observations.extend(data.get("results", []))
+
+            if len(all_observations) >= total_results:
+                break
+            time.sleep(1)
+
+        observations = all_observations
 
     if stats_only:
         print(f"URL: {response.url}")
+        #print(f"Pages fetched: {page}")
+        #print(f"Total results available: {total_results}")
         print(f"Results returned: {len(observations)}")
         dates = sorted(obs.get("observed_on", "") for obs in observations if obs.get("observed_on"))
         locations = {obs.get("place_guess") for obs in observations if obs.get("place_guess")}
@@ -130,7 +160,7 @@ def get_inat_rare_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int = DAY
     return observations, None
 
 
-def get_inat_historic_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int = DAYS_BACK, max_results: int = MAX_RESULTS, stats_only: bool = False):
+def get_inat_historic_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int = DAYS_BACK, max_results: int = MAX_RESULTS, stats_only: bool = False, paginate: bool = True):
     """
     Fetch research-grade observations from the same week one year ago near a location.
     lat/lng: coordinates
@@ -138,6 +168,7 @@ def get_inat_historic_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int =
     days_back: width of the date window (default 7)
     max_results: cap the number of results returned
     stats_only: return summary statistics instead of raw observations
+    paginate: if True, fetch all pages up to max_pages=5
     """
     today = date.today()
     try:
@@ -154,25 +185,52 @@ def get_inat_historic_obs(lat, lng, radius_km: int = RADIUS_KM, days_back: int =
         "radius": radius_km,
         "d1": d1,
         "d2": d2,
-        "per_page": max_results,
+        "per_page": 200,
         "order": "desc",
         "order_by": "observed_on",
         "quality_grade": "research",
     }
 
-    response = requests.get(url, params=params)
+    if not paginate:
+        response = requests.get(url, params=params)
 
-    if response.status_code == 429:
-        return None, "iNaturalist rate limit hit. Try again later."
+        if response.status_code == 429:
+            return None, "iNaturalist rate limit hit. Try again later."
+        if response.status_code != 200:
+            return None, f"iNaturalist API error: {response.status_code}"
 
-    if response.status_code != 200:
-        return None, f"iNaturalist API error: {response.status_code}"
+        data = response.json()
+        observations = data.get("results", [])
+        print(f"Total results available: {data.get('total_results', '?')}")
+    else:
+        max_pages = 5
+        all_observations = []
+        for page in range(1, max_pages + 1):
+            params["page"] = page
+            response = requests.get(url, params=params)
 
-    data = response.json()
-    observations = data.get("results", [])
+            if response.status_code == 429:
+                return None, "iNaturalist rate limit hit. Try again later."
+            if response.status_code != 200:
+                return None, f"iNaturalist API error: {response.status_code}"
+
+            data = response.json()
+            total_results = data.get("total_results", 0)
+            if page == 1:
+                print(f"Total results available: {total_results}")
+
+            all_observations.extend(data.get("results", []))
+
+            if len(all_observations) >= total_results:
+                break
+            time.sleep(1)
+
+        observations = all_observations
 
     if stats_only:
         print(f"URL: {response.url}")
+        #print(f"Total results available: {total_results}")
+        #print(f"Pages fetched: {page}")
         print(f"Results returned: {len(observations)}")
         dates = sorted(obs.get("observed_on", "") for obs in observations if obs.get("observed_on"))
         locations = {obs.get("place_guess") for obs in observations if obs.get("place_guess")}
