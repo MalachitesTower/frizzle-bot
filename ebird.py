@@ -5,6 +5,7 @@ import requests
 import os
 from dotenv import load_dotenv
 from settings import DAYS_BACK, MAX_RESULTS
+from utils import _build_stats
 
 load_dotenv()
 EBIRD_TOKEN = os.getenv("EBIRD_TOKEN")
@@ -38,16 +39,7 @@ def get_ebird_recent_obs(lat, lng, days_back: int = DAYS_BACK, max_results: int 
     observations = response.json()
 
     if stats_only:
-        print(f"URL: {response.url}")
-        print(f"Results returned: {len(observations)}")
-        dates = sorted(obs.get("obsDt", "") for obs in observations if obs.get("obsDt"))
-        locations = {obs.get("locName") for obs in observations if obs.get("locName")}
-        return {
-            "params": {"lat": lat, "lng": lng, "days_back": days_back, "max_results": max_results},
-            "num_observations": len(observations),
-            "num_locations": len(locations),
-            "date_range": {"earliest": dates[0], "latest": dates[-1]} if dates else {}
-        }, None
+        return _build_stats(observations, {"lat": lat, "lng": lng, "days_back": days_back, "max_results": max_results}, "obsDt", "locName", response_url=response.url)
 
     return observations, None
 
@@ -78,16 +70,7 @@ def get_ebird_rare_birds(lat, lng, days_back: int = DAYS_BACK, max_results: int 
     observations = response.json()
 
     if stats_only:
-        print(f"URL: {response.url}")
-        print(f"Results returned: {len(observations)}")
-        dates = sorted(obs.get("obsDt", "") for obs in observations if obs.get("obsDt"))
-        locations = {obs.get("locName") for obs in observations if obs.get("locName")}
-        return {
-            "params": {"lat": lat, "lng": lng, "days_back": days_back, "max_results": max_results},
-            "num_observations": len(observations),
-            "num_locations": len(locations),
-            "date_range": {"earliest": dates[0], "latest": dates[-1]} if dates else {}
-        }, None
+        return _build_stats(observations, {"lat": lat, "lng": lng, "days_back": days_back, "max_results": max_results}, "obsDt", "locName", response_url=response.url)
 
     return observations, None
 
@@ -119,16 +102,7 @@ def get_ebird_historic_birds(region_code: str, y: int, m: int, d: int, days_back
 
 
     if stats_only:
-        print(f"URL: {response.url}")
-        print(f"Results returned: {len(observations)}")       
-        dates = sorted(obs.get("obsDt", "") for obs in observations if obs.get("obsDt"))
-        locations = {obs.get("locName") for obs in observations if obs.get("locName")}
-        return {
-            "params": {"region_code": region_code, "y": y, "m": m, "d": d, "days_back": days_back, "max_results": max_results},
-            "num_observations": len(observations),
-            "num_locations": len(locations),
-            "date_range": {"earliest": dates[0], "latest": dates[-1]} if dates else {}
-        }, None
+        return _build_stats(observations, {"region_code": region_code, "y": y, "m": m, "d": d, "days_back": days_back, "max_results": max_results}, "obsDt", "locName", response_url=response.url)
 
     return observations, None
 

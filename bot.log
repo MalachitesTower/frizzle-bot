@@ -923,3 +923,10 @@ Loop thread traceback (most recent call last):
   File "C:\Users\18576\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1103, in read
     return self._sslobj.read(len, buffer)
 
+2026-03-29 21:12:20,846 WARNING PyNaCl is not installed, voice will NOT be supported
+2026-03-29 21:12:20,846 WARNING davey is not installed, voice will NOT be supported
+2026-03-29 21:12:20,847 INFO logging in using static token
+2026-03-29 21:12:21,502 INFO Shard ID None has connected to Gateway (Session ID: 7b42ad8b0924cc7218f8db0ea7f83e33).
+2026-03-29 21:28:48,605 WARNING Shard ID None has stopped responding to the gateway. Closing and restarting.
+2026-03-29 21:28:48,756 INFO Shard ID None session has been invalidated.
+2026-03-29 21:28:54,063 INFO Shard ID None has connected to Gateway (Session ID: 46b1bd8c13d86718f8b20f69e34c5521).
